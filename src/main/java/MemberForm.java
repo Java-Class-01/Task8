@@ -17,5 +17,15 @@ public class MemberForm {
     public MemberForm(){
         this.prepareJFrame();
     }
+    public JFrame prepareJFrame(){
+        Mainframe=new JFrame("GROUP ONE MEMBERS FORM");
+        Mainframe.setSize(500, 400);
+        Mainframe.setLayout(new BorderLayout(10, 10));
+        Mainframe.add(this.prepareFormPanel(), BorderLayout.CENTER);
+        Mainframe.add(this.prepareFormPanel());
+        Mainframe.setVisible(true);
+
+        return Mainframe;
+    }
 
 }
