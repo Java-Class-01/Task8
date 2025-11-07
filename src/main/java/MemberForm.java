@@ -27,5 +27,18 @@ public class MemberForm {
 
         return Mainframe;
     }
+    //creating the panel to be added to our mainframe
+    public JPanel prepareFormPanel(){
+        Formpanel = new JPanel(new GridLayout(4, 2,10,10));
+        Formpanel.add(this.prepareJLabelNamelabel());
+        Formpanel.add(this.prepareJTextFieldNametextfield());
+        Formpanel.add(this.prepareJLabelEmailLabel());
+        Formpanel.add(this.prepareJTextFieldEmailTextField());
+        Formpanel.add(this.prepareJButtonSaveButton());
+        //putting the JTable in a scrollpane
+        JScrollPane scrollPane = new JScrollPane(this.prepareMemberTable());
+        Formpanel.add(scrollPane);
+        return Formpanel;
+    }
 
 }
