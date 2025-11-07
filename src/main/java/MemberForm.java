@@ -84,6 +84,14 @@ public class MemberForm {
 
         return saveButton;
     }
+    //creating the table in the database to contain the member details
+    public JTable prepareMemberTable(){
+        tableModel = new DefaultTableModel(new String[]{"ID", "Name", "Email"}, 0);
+        loadUsers();
+        MemberTable=new JTable(tableModel);
+        return MemberTable;
+    }
+    //Awap complete the remaining part and that of connecting to sql database
 
 
 }
