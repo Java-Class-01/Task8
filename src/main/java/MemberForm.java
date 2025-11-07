@@ -49,5 +49,14 @@ public class MemberForm {
         nametextfield=new JTextField();
         return nametextfield;
     }
+    //creating the JLabel and JTextfield methods for the email
+    public JLabel prepareJLabelEmailLabel(){
+        emaillabel=new JLabel("your email");
+        return emaillabel;
+    }
+    public JTextField prepareJTextFieldEmailTextField(){
+        emailField=new JTextField();
+        return emailField;
+    }
 
 }
