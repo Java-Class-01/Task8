@@ -58,5 +58,32 @@ public class MemberForm {
         emailField=new JTextField();
         return emailField;
     }
+    //adding the JButton method and its action listener when the save button is clicked
+    public JButton prepareJButtonSaveButton(){
+        saveButton=new JButton("save your details");
+
+        //action handler for saving when the save details button is clicked by member
+        saveButton.addActionListener(e -> {
+            String name = nametextfield.getText().trim();
+            String email = emailField.getText().trim();
+            //if statement to not take empty values
+            if (name.isEmpty() || email.isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Please fill all fields!");
+                return;
+            }
+
+            if (saveUser(name, email)) {
+                JOptionPane.showMessageDialog(null, "User saved successfully!");
+                loadUsers();
+                nametextfield.setText("");
+                emailField.setText("");
+            } else {
+                JOptionPane.showMessageDialog(null, "Error saving user!");
+            }
+        });
+
+        return saveButton;
+    }
+
 
 }
