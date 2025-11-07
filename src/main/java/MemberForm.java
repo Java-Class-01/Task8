@@ -40,5 +40,14 @@ public class MemberForm {
         Formpanel.add(scrollPane);
         return Formpanel;
     }
+    //creating the JLabel method for the name and also the textfield
+    public JLabel prepareJLabelNamelabel(){
+        namelabel=new JLabel("your name");
+        return namelabel;
+    }
+    public JTextField prepareJTextFieldNametextfield(){
+        nametextfield=new JTextField();
+        return nametextfield;
+    }
 
 }
