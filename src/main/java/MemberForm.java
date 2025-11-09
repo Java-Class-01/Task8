@@ -91,7 +91,42 @@ public class MemberForm {
         MemberTable=new JTable(tableModel);
         return MemberTable;
     }
-    //Awap complete the remaining part and that of connecting to sql database
+   //method to get the details of members from database and display them on JTable
+    private void loadUsers() {
+        tableModel.setRowCount(0);
+        String sql = "SELECT id, name, email FROM Users";
+
+        try (Connection conn = DatabaseConnection.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String name = rs.getString("name");
+                String email = rs.getString("email");
+                tableModel.addRow(new Object[]{id, name, email});
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }}
+
+    //saving the entered member details to the database
+    private boolean saveUser(String name, String email) {
+        String sql = "INSERT INTO Users (name, email) VALUES (?, ?)";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, name);
+            stmt.setString(2, email);
+            stmt.executeUpdate();
+            return true;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 
 
 }
